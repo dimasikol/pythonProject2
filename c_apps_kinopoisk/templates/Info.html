@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+12
+{{  dim }}
+{% for i in dim  %}
+    <h1>{{ i }}</h1>
+{% endfor %}
+{% for object in object_list %}
+<section>
+<h3>{{ object.dim }}</h3>
+<h3>{{ object.title }}</h3>
+<h3>{{ object.description }}</h3>
+    <tr>
+    {% for genre in object.genres.all %}
+        <th>
+        {{ genre }}
+        </th>
+      {% endfor %}
+    </tr>
+    <div>
+        <table>
+            <tr>
+    {% for actor in object.actors.all %}
+        <th>
+            <h1>{{ actor.name }}</h1>
+        </th>
+    {% endfor %}
+        </tr>
+            <tr>
+            {% for actorim in object.actors.all %}
+                 <th><img src="{{ actorim.image.url }}" alt="" width="250" height="400"></th>
+            {% endfor %}
+            </tr>
+        </table>
+    </div>
+    {% empty %}
+<h2>к сожелению база пуста</h2>
+{% endfor %}</section>
+</body>
+</html>

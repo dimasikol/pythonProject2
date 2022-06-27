@@ -1,0 +1,20 @@
+h1{
+ color: blue;
+}
+h2{
+    color: green;
+}
+p
+{
+    color: red;
+}
+.img-views-core{
+    height: auto;
+    width: 250px;
+}
+
+.wrapper {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,34 @@
+{% extends 'd_apps_quiz/base.html' %}
+{% load tagss %}
+
+{% load static %}
+{% block title %}
+Вопросы
+{% endblock title %}
+
+
+{% block body %}
+
+    {% get_category as items %}
+    {% for object in items.list_objects %}
+      <h1> {{ object.name }}</h1>
+    {% endfor %}
+22
+{% for object in object_list %}
+        <h2>{{ object.title }}</h2>
+        <h4>{{ object.description }}</h4>
+            {% for item in object.falseanswer_set.all %}
+                <h6>ответ: {{ item }}</h6>
+            {% endfor %}
+{% endfor %}
+
+
+{% endblock body %}
+
+{% block nav %}
+нав блок
+{% endblock nav %}
+
+{% block footer %}
+фоот блок
+{% endblock footer %}

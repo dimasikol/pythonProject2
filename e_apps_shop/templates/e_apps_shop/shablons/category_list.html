@@ -1,0 +1,26 @@
+{% extends 'e_apps_shop/base.html' %}
+{% block title %}виджет категорий {% endblock title %}
+
+{% block body %}
+
+{% for object in object_list %}
+<div class="container">
+<div class="row row-cols-4">
+
+    {% for i in object.items_set.all %}
+    <div class="col">
+        <a href="{{ i.pk }}">{{ i.name }}</a>
+        <div>
+        <img src="{{ i.image.url }}" alt="" width="200" height="140">
+        </div>
+
+        <h3>{{ i.pk }} of {{ count_element }}</h3>
+    </div>
+
+
+    {% endfor %}
+</div>
+    </div>
+    {% endfor %}
+
+{% endblock body %}

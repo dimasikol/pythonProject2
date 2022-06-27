@@ -1,0 +1,84 @@
+{% extends 'c_apps_kinopoisk/base.html' %}
+{% load static %}
+    {% block title %}
+Clack Website Template
+    {% endblock %}
+
+
+    {% block body %}
+    <div id="page" class="page"><!-- mian-content -->
+        <div class="main-banner bg bg1" id="home" style="background-color: rgba(0, 0, 0, 0); margin-top: 0px; background-image: url(&quot;bundles/single-post-pic.jpg&quot;);">
+            <!-- header -->
+            <header class="header">
+                <div class="container-fluid px-lg-5">
+                    <!-- nav -->
+
+                    <!-- //nav -->
+                </div>
+            </header>
+                <div class="row">
+                        <div class="container d-flex align-items-center justify-content-center">
+                            <div class="product-shoe-info editContent text-center mt-lg-4">
+                            <div class="men-thumb-item">
+                                <img src="{{ movie_list.poster.url }}" alt="">
+                            </div>
+                            <div class="item-info-product">
+                                <a href="{{ movie_list.id }}" class="editContent">{{ movie_list.title }} </a>
+                            </div>
+                                {{ movie_list.poster.url }}
+
+                            </div>
+                            <div>
+                                {{ movie_list.description | safe }}
+
+                                {% lorem 4 p random %}
+                            </div>
+                        </div>
+                </div>
+        </div>
+
+        {% for image in movie_list.movieshots_set.all %}
+            <img src="{{ image.image.url }}" class="img-movie-shots" alt="{{ image.description }}">
+        {% endfor %}
+        <form action="{% url 'add_review' movie_list.id %}" method="post" class="mt-1">
+            {% csrf_token %}
+            <div class="form-group editContent" style="...">
+                <label for="contactcomment" class="editContent" style="...">Ваш комментарий</label>
+                <textarea class="form-control border" rows="2" name="text" id="contactcomment" required=""></textarea>
+            </div>
+
+        <div class="d-sm-flex">
+            <div class="col-sm-6 form-group p-0 editContent" style="...">
+                <label for="contactusername" class="editContent" style="...">name</label>
+                    <input type="text" class="form-control border" name="name" id="contactusername" required="">
+            </div>
+
+            <div class="col-sm-6 form-group ml-sm-3 editContent" style="...">
+                <label for="contactemail" class="editContent" style="...">email</label>
+                    <input type="text" class="form-control border"  name='email' id="contactemail" required="">
+            </div>
+            </div>
+            <button type="submit" class="mt-3 btn btn-success btn-block py-3">run
+            </button>
+
+            </form>
+
+        <div class="container-md">
+            <h2 class="my-4 editContent">Отзывы:</h2>
+
+            {% for reviews in movie_list.reviews_set.all %}
+
+            <h5 class="mt-0 editContent">
+                {{ reviews.name }}
+            </h5>
+        <p class="mt-2 editContent">{{ reviews.text }}</p>
+        <div class="media mt-5 editContent">
+        </div>
+            {% empty %}
+                    <p class="mt-2 editContent">оставьте отзыв первым</p>
+
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endblock %}

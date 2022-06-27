@@ -1,0 +1,30 @@
+{% extends 'e_apps_shop/base.html' %}
+{% block title %}виджет категорий {% endblock title %}
+
+{% block body %}
+<h2>{{ object.name }}</h2>
+<p>
+
+<div class="container">
+<div class="row row-cols-3">
+<div class="col">
+<img src="{{ object.image.url }}" alt=""></p>
+
+    <div class="col">
+        характеристики
+
+    </div>
+    </div>
+
+    {{ object.description|safe }}
+    <div class="col ">
+
+    {% for obj in object.category_set.all %}
+
+        {{ obj }}
+
+    {% endfor %}
+    </div>
+    </div>
+    </div>
+{% endblock body %}
